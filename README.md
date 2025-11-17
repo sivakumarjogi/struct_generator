@@ -1,135 +1,129 @@
-struct_generator
+# struct_generator
 
-A lightweight and powerful CLI tool to generate folder structure and page files inside the lib/ directory in Flutter projects.
-This package helps developers maintain a clean, consistent, and scalable architecture without manually creating folders and files every time.
+A lightweight and flexible CLI tool to automatically generate folder
+structures and page files inside the **lib/** directory of any Flutter
+project.\
+It helps developers maintain a **clean, scalable, and consistent
+architecture** without manually creating repetitive folders and Dart
+files.
 
-Features
+------------------------------------------------------------------------
 
-Automatically creates folders inside lib/
+## ✨ Features
 
-Generates page files with correct class names
+-   🚀 Automatically creates folders inside `lib/`
+-   📄 Generates page files with correct class names
+-   📁 Supports custom output directory (`-o`)
+-   ⚡ Very fast and simple to use
+-   🔄 Avoids repetitive manual file creation
+-   🧩 Works with any Flutter architecture (Bloc, MVVM, MVC, Clean,
+    Provider, etc.)
+-   🛠 Ideal for medium & large Flutter apps
 
-Very fast CLI command
+------------------------------------------------------------------------
 
-Supports custom output directories (-o)
+## 📦 Installation
 
-Maintains consistent project structure
+Add this package to your `pubspec.yaml`:
 
-Avoids repetitive manual file creation
-
-Ideal for medium and large Flutter applications
-
-Installation
-
-Add the package to your project:
-
+``` yaml
 dev_dependencies:
-struct_generator: ^1.0.0
+  struct_generator: ^1.0.0
+```
 
+Then run:
 
-Activate globally:
+``` sh
+flutter pub get
+```
 
+To use globally:
+
+``` sh
 dart pub global activate struct_generator
+```
 
+------------------------------------------------------------------------
 
-Or run locally:
+## 🖥️ Usage
 
-dart run struct_generator
+### 1. Show available generators
 
-Usage
-Generate a new page
-struct_generator show page home -o pages
+``` sh
+struct_generator show
+```
 
+### 2. Generate a page inside lib/pages
 
-This will generate:
-
-lib/
-└─ pages/
-└─ home/
-home_page.dart
-
-Generated File Example
-
-home_page.dart
-
-import 'package:flutter/material.dart';
-
-class HomePage extends StatelessWidget {
-const HomePage({super.key});
-
-@override
-Widget build(BuildContext context) {
-return Scaffold(
-appBar: AppBar(title: const Text('Home')),
-body: const Center(
-child: Text('Home Page'),
-),
-);
-}
-}
-
-How It Works
-
-The generator:
-
-Takes the name you pass (home)
-
-Converts it to a class name (HomePage)
-
-Creates the folder automatically under lib/
-
-Generates the Dart file inside it using a template
-
-Example internal logic:
-
-final libPath = p.join('lib', outputDir);
-final dir = Directory(p.join(libPath, name));
-dir.createSync(recursive: true);
-final filePath = p.join(dir.path, '${name}_page.dart');
-
-Folder Structure Example
-lib/
-├─ pages/
-│   └─ home/
-│        home_page.dart
-├─ widgets/
-├─ models/
-└─ ...
-
-Advantages
-
-Saves time by avoiding manual folder and file creation
-
-Ensures consistent file and folder naming
-
-Improves developer productivity
-
-Suitable for large and enterprise-level Flutter apps
-
-Fully customizable templates and structure
-
-FAQ
-Can I generate inside nested folders?
-
-Yes.
-
-Example:
-
-struct_generator show page login -o features/auth
-
+``` sh
+struct_generator show page home
+```
 
 Creates:
 
-lib/features/auth/login/login_page.dart
+    lib/pages/home/home_page.dart
 
-Do I need to create folders manually?
+### 3. Generate inside custom folder
 
-No. The generator creates all folders automatically.
+``` sh
+struct_generator show page home -o lib/screens
+```
 
-Contributing
+Creates:
 
-Pull requests and feature suggestions are welcome.
+    lib/screens/home/home_page.dart
 
-License
+------------------------------------------------------------------------
+
+## 📁 Generated File Example
+
+``` dart
+import 'package:flutter/material.dart';
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Home Page')),
+      body: const Center(child: Text('Home Page')),
+    );
+  }
+}
+```
+
+------------------------------------------------------------------------
+
+## 🧠 Advantages
+
+Feature                    Benefit
+  -------------------------- --------------------------------
+Auto folder creation       Saves time & avoids mistakes
+Auto file generation       Prevents boilerplate work
+Consistent structure       Clean, scalable project
+Works with architectures   Bloc, MVVM, Clean, Provider...
+CLI tool                   Simple and fast to use
+
+------------------------------------------------------------------------
+
+## 📚 Example Workflow
+
+``` sh
+struct_generator show page login
+struct_generator show page dashboard
+struct_generator show page profile
+```
+
+Outputs:
+
+    lib/pages/login/login_page.dart
+    lib/pages/dashboard/dashboard_page.dart
+    lib/pages/profile/profile_page.dart
+
+------------------------------------------------------------------------
+
+## 📄 License
 
 MIT License
+
