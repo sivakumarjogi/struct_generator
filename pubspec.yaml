@@ -1,10 +1,11 @@
-publish_to: 'https://pub.dev'
 name: struct_generator
-version: 0.1.0
+version: 0.1.2
 homepage: https://github.com/sivakumarjogi/struct_generator
-description: 'CLI generator for Flutter module/page/bloc skeletons'
+description: CLI generator for Flutter module/page/bloc skeletons
+
 environment:
   sdk: '>=3.0.0 <4.0.0'
+
 executables:
   struct_generator: struct_generator
 
